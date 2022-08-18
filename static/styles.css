@@ -1,0 +1,31 @@
+body {
+    font-size: 1.3em
+}
+
+@media only screen and (max-width: 600px) {
+    .table td.text {
+        max-width: 177px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .table td.text {
+        max-width: 942px;
+    }
+}
+
+.table td.text span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.footer {
+    position:absolute;
+    bottom: 5%;
+    width: 100%;
+    text-align: center;
+    font-size:1.2em
+}
