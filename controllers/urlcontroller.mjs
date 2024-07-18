@@ -11,7 +11,7 @@ async function createShortUrl(req, res) {
     try {
         let url = await Url.findOne({ fullUrl });
         if (url) {
-            return res.status(200).json({ fullUrl: url.fullUrl, shortUrl: url.shortUrl });
+            return res.status(200).render('result',{ fullUrl: url.fullUrl, shortUrl: url.shortUrl });
         }
 
         let shortUrl;
