@@ -1,31 +1,36 @@
 body {
-    font-size: 1.3em
+    background-color: #f8f9fa;
 }
 
-@media only screen and (max-width: 600px) {
-    .table td.text {
-        max-width: 177px;
-    }
+.container {
+    margin-top: 50px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-@media only screen and (min-width: 992px) {
-    .table td.text {
-        max-width: 942px;
-    }
+h1 {
+    color: #343a40;
+    margin-bottom: 20px;
 }
 
-.table td.text span {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
-    max-width: 100%;
+.form-inline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table {
+    margin-top: 30px;
 }
 
 .footer {
-    position:absolute;
-    bottom: 5%;
-    width: 100%;
-    text-align: center;
-    font-size:1.2em
+    margin-top: 50px;
+    font-size: 14px;
+}
+
+.footer svg {
+    vertical-align: middle;
 }

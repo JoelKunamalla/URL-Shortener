@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortened URL</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+        .heart-icon {
+            color: #e25555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">Shortened URL</h1>
+        <div class="alert alert-success" role="alert">
+            <p>Full URL: <a href="<%= fullUrl %>" target="_blank"><%= fullUrl %></a></p>
+            <p>Short URL: <a href="<%= shortUrl %>" target="_blank"><%= shortUrl %></a></p>
+        </div>
+        <a href="/" class="btn btn-primary">Shorten Another URL</a>
+    </div>
+    <footer class="footer">
+        <p>Made with <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart-fill heart-icon" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+        </svg> by <a href="https://github.com/JoelKunamalla/">JoelKunamalla</a></p>
+    </footer>
+</body>
+
+</html>

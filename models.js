@@ -9,7 +9,7 @@ const urlSchema = mongoose.Schema({
     "shortUrl": {
         type: String,
         required: true,
-    },
+    },  
     "visits": {
         type: Number,
         required: true,
