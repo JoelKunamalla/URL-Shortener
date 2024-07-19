@@ -16,7 +16,7 @@
             <input type="url" name="fullUrl" id="fullUrl" class="form-control col-md-8" placeholder="Enter URL to shorten" required>
             <button type="submit" class="btn btn-success ml-2">Shorten URL</button>
         </form>
-        <table class="table table-striped table-bordered">
+        <!-- <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Full URL</th>
@@ -25,15 +25,15 @@
                 </tr>
             </thead>
             <tbody>
-                <% urlsArray.forEach(url => { %>
+                <%# urlsArray.forEach(url => { %>
                 <tr>
-                    <td><a href="<%= url.fullUrl %>" target="_blank" rel="noopener noreferrer"><%= url.fullUrl %></a></td>
-                    <td><a href="<%= url.shortUrl %>" target="_blank" rel="noopener noreferrer"><%= url.shortUrl %></a></td>
-                    <td><%= url.visits %></td>
+                    <td><a href="<%#= url.fullUrl %>" target="_blank" rel="noopener noreferrer"><%#= url.fullUrl %></a></td>
+                    <td><a href="<%#= url.shortUrl %>" target="_blank" rel="noopener noreferrer"><%#= url.shortUrl %></a></td>
+                    <td><%#= url.visits %></td>
                 </tr>
-                <% }) %>
+                <%# }) %>
             </tbody>
-        </table>
+        </table> -->
     </div>
     <footer class="footer text-center">
         <p>Made with <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#e25555" class="bi bi-heart-fill" viewBox="0 0 16 16">
