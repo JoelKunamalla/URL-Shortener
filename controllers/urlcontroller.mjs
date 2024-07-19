@@ -3,11 +3,12 @@ import { customHash } from '../utils/customhash.mjs';
 
 async function createShortUrl(req, res) {
     const { fullUrl } = req.body;
+    console.log(`url check`);
+    console.log(isValidUrl(fullUrl));
 
-    if (!fullUrl) {
-        return res.status(400).json({ error: "Full URL is required" });
+    if (!isValidUrl(fullUrl)) {
+        return res.status(400).render({ message: "Full URL is required" });
     }
-
     try {
         let url = await Url.findOne({ fullUrl });
         if (url) {
@@ -56,3 +57,14 @@ async function redirectShortUrl(req, res) {
 }
 
 export { createShortUrl, redirectShortUrl };
+
+
+function isValidUrl(string) {
+    try {
+        const b = new URL(string);
+        console.log(b);
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
