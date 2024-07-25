@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -28,8 +28,8 @@
     <div class="container">
         <h1 class="text-center">Shortened URL</h1>
         <div class="alert alert-success" role="alert">
-            <p>Full URL: <a href="<%= fullUrl %>" target="_blank"><%= fullUrl %></a></p>
-            <p>Short URL: <a href="<%= shortUrl %>" target="_blank"><%= shortUrl %></a></p>
+            <p>Full URL: <a href="<%#= fullUrl %>" target="_blank"><%#= fullUrl %></a></p>
+            <p>Short URL: <a href="<%#= shortUrl %>" target="_blank"><%#= shortUrl %></a></p>
         </div>
         <a href="/" class="btn btn-primary">Shorten Another URL</a>
     </div>
@@ -41,4 +41,144 @@
     </footer>
 </body>
 
+</html> -->
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">URL Shortener Result</h1>
+        <div class="text-center">
+            <%#if (message) { %>
+                <p><%#= message %></p>
+                <script>
+                    function checkUrlStatus() {
+                        fetch('/checkUrlStatus?fullUrl=<%#= fullUrl %>')
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.shortUrl) {
+                                    window.location.href = '/result?fullUrl=<%#= fullUrl %>';
+                                }
+                            })
+                            .catch(error => console.error('Error checking URL status:', error));
+                    }
+                    setInterval(checkUrlStatus, 5000); // Poll every 5 seconds
+                </script>
+            <%# } else { %>
+                <h2>Your shortened URL</h2>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="shortUrl" value="<%#= baseUrl %>/<%#= shortUrl %>" readonly>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard()">Copy</button>
+                    </div>
+                </div>
+            </div>
+            <a href="/" class="btn btn-primary">Shorten Another URL</a>
+        </div>
+            <%# } %>
+        </div>
+    </div>
+    <footer class="footer text-center">
+        <p>Made with <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#e25555" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+            </svg> by <a href="https://github.com/JoelKunamalla/">JoelKunamalla</a></p>
+    </footer>
+    <script>
+        function copyToClipboard() {
+            var copyText = document.getElementById("shortUrl");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+            document.execCommand("copy");
+        }
+    </script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .spinner-border {
+            display: none;
+            width: 3rem;
+            height: 3rem;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">URL Shortener</h1>
+        <div class="text-center">
+            <% if (message) { %>
+                <p><%= message %></p>
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            <% } else { %>
+                <h2>Your shortened URL</h2>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="shortUrl" value="<%= baseUrl %>/<%= shortUrl %>" readonly>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="copyButton">Copy</button>
+                    </div>
+                </div>
+            <% } %>
+            <a href="/" class="btn btn-primary">Shorten Another URL</a>
+        </div>
+    </div>
+    <footer class="footer text-center">
+        <p>Made with <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#e25555" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+            </svg> by <a href="https://github.com/JoelKunamalla/">JoelKunamalla</a></p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            <% if (typeof message !== 'undefined' && message) { %>
+                document.querySelector('.spinner-border').style.display = 'block'; // Show spinner
+                function checkUrlStatus() {
+                    fetch('/checkUrlStatus?fullUrl=<%= fullUrl %>')
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.shortUrl) {
+                                window.location.href = '/result?fullUrl=<%= fullUrl %>&shortUrl=' + data.shortUrl;
+                            }
+                        })
+                        .catch(error => console.error('Error checking URL status:', error));
+                }
+                setInterval(checkUrlStatus, 2000); // Poll every 5 seconds
+            <% } %>
+
+            document.getElementById('copyButton').addEventListener('click', function() {
+                const shortUrl = document.getElementById('shortUrl');
+                shortUrl.select();
+                document.execCommand('copy');
+                alert('Short URL copied to clipboard!');
+            });
+        });
+    </script>
+</body>
+
 </html>
+
